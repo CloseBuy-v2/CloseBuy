@@ -1,34 +1,29 @@
-import {App, Platform} from 'ionic-framework/ionic';
+import {App, Platform, MenuController, IonicApp} from 'ionic-framework/ionic';
 import {TabsPage} from './pages/tabs/tabs';
-
-// https://angular.io/docs/ts/latest/api/core/Type-interface.html
+import {LoginPage} from './pages/login/login';
+import {SignupPage} from './pages/signup/signup';
 import {Type} from 'angular2/core';
 
 
 @App({
-  // template: '<ion-nav [root]="rootPage"></ion-nav>',
   templateUrl: 'build/app.html',
-  config: {} // http://ionicframework.com/docs/v2/api/config/Config/
+  config: {}
 })
 export class MyApp {
   rootPage: Type = TabsPage;
-
-  constructor(platform: Platform) {
+  menuLoginPage: LoginPage;
+  menuSignupPage: SignupPage;
+  constructor(public app: IonicApp, public menu: MenuController, platform: Platform) {
     platform.ready().then(() => {
-      // The platform is now ready. Note: if this callback fails to fire, follow
-      // the Troubleshooting guide for a number of possible solutions:
-      //
-      // Okay, so the platform is ready and our plugins are available.
-      // Here you can do any higher level native things you might need.
-      //
-      // First, let's hide the keyboard accessory bar (only works natively) since
-      // that's a better default:
-      //
-      // Keyboard.setAccessoryBarVisible(false);
-      //
-      // For example, we might change the StatusBar color. This one below is
-      // good for dark backgrounds and light text:
-      // StatusBar.setStyle(StatusBar.LIGHT_CONTENT)
+      this.app = app;
+      this.menu = menu;
+      this.menuLoginPage = LoginPage;
+      this.menuSignupPage = SignupPage;
     });
+  }
+  openPage(page) {
+    this.menu.close();
+    let nav = this.app.getComponent('nav');
+    nav.setRoot(page);
   }
 }
