@@ -1,0 +1,10 @@
+<ion-navbar *navbar>
+    <ion-title>
+        Home
+    </ion-title>
+</ion-navbar>
+ 
+<ion-content class="home">
+    <button default (click)="share('Hello World', 'Attention', null, 'https://blog.nraboy.com')">Share</button>
+    <button default (click)="shareViaTwitter('Hello World', null, 'https://blog.nraboy.com')">Share on Twitter</button>
+</ion-content>
