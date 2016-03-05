@@ -1,15 +1,30 @@
-<ion-content padding class="has-header">
-  <ion-list>
+<ion-navbar *navbar hideBackButton class="android-attr">
+  <ion-title>Sign Up Page</ion-title>
+</ion-navbar>
 
-    <ion-item>
-      <ion-label floating>Username</ion-label>
-      <ion-input type="text"></ion-input>
-    </ion-item>
+<ion-content class="has-header components-demo">
 
-    <ion-item>
-      <ion-label floating>Password</ion-label>
-      <ion-input type="password"></ion-input>
-    </ion-item>
+    <ion-list>
 
-  </ion-list>
+      <ion-item>
+        <ion-label floating>Username</ion-label>
+        <ion-input type="text" value=""></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label floating>Password</ion-label>
+        <ion-input type="password" value=""></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label floating>Confirm Password</ion-label>
+        <ion-input type="password" value=""></ion-input>
+      </ion-item>
+
+    </ion-list>
+
+    <div padding>
+      <button primary block>Sign In</button>
+    </div>
+
 </ion-content>
