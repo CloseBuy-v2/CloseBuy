@@ -1,13 +1,21 @@
 <ion-menu [content]="content">
   <ion-toolbar dark>
-    <ion-title>Pages</ion-title>
+    <ion-title>Menu</ion-title>
   </ion-toolbar>
   <ion-content>
     <ion-list>
+
       <button ion-item (click)="openPage(rootPage)">
         <ion-icon ios="ios-home" md="md-home"></ion-icon>
           Home
       </button>
+
+
+      <task ion-item>
+        Account
+      </task>
+
+
       <button ion-item (click)="openPage(menuLoginPage)">
         <ion-icon ios="ios-log-in" md="md-log-in"></ion-icon>
           Login
@@ -28,9 +36,15 @@
         Settings
       </button>
 
+
+      <task ion-item>
+        More
+      </task>
+
+
       <button ion-item (click)="openPage(feedbackPage)">
         <ion-icon ios="ios-happy" md="md-happy"></ion-icon>
-        Feedback
+        Support & Feedback
       </button>
 
       <button ion-item (click)="openPage(rateUsPage)">
