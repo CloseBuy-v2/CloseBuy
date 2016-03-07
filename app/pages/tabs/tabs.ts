@@ -1,4 +1,4 @@
-import {Page} from 'ionic-framework/ionic';
+import {Page} from 'ionic-angular';
 import {CategoriesPage} from '../categories/categories';
 import {LocationPage} from '../location/location';
 
