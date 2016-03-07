@@ -4,46 +4,55 @@
   </ion-toolbar>
   <ion-content>
     <ion-list>
-
+      <button ion-item (click)="openPage(rootPage)">
+        <ion-icon ios="ios-home" md="md-home"></ion-icon>
+          Home
+      </button>
       <button ion-item (click)="openPage(menuLoginPage)">
-        <img src="img/heart.svg" width="20" />
+        <ion-icon ios="ios-log-in" md="md-log-in"></ion-icon>
           Login
       </button>
 
       <button ion-item (click)="openPage(menuSignupPage)">
-        <ion-icon name="heart"></ion-icon>
+        <ion-icon ios="ios-create" md="md-create"></ion-icon>
           Signup
       </button>
 
       <button ion-item (click)="openPage(logoutPage)">
+        <ion-icon ios="ios-log-out" md="md-log-out"></ion-icon>
         Logout
       </button>
 
       <button ion-item (click)="openPage(settingsPage)">
+        <ion-icon ios="ios-settings" md="md-settings"></ion-icon>
         Settings
       </button>
-      
+
       <button ion-item (click)="openPage(feedbackPage)">
+        <ion-icon ios="ios-happy" md="md-happy"></ion-icon>
         Feedback
       </button>
-      
+
       <button ion-item (click)="openPage(rateUsPage)">
+        <ion-icon ios="ios-heart" md="md-heart"></ion-icon>
         Rate Us
       </button>
-      
+
       <button ion-item (click)="openPage(menuSharePage)">
-        <ion-icon class="item-icon-left" nav-clear name="share-alt"></ion-icon>
+        <ion-icon ios="ios-share" md="md-share"></ion-icon>
           Share
       </button>
-      
+
       <button ion-item (click)="openPage(aboutUsPage)">
+        <ion-icon ios="ios-person" md="md-person"></ion-icon>
         About Us
       </button>
-      
+
       <button ion-item (click)="openPage(privacyPage)">
+        <ion-icon ios="ios-briefcase" md="md-briefcase"></ion-icon>
         Privacy Policy
       </button>
-    
+
     </ion-list>
   </ion-content>
 </ion-menu>
