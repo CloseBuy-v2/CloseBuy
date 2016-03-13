@@ -1,9 +1,11 @@
 import {App, IonicApp, Platform, MenuController} from 'ionic-angular';
 import {TabsPage} from './pages/tabs/tabs';
 import {LoginPage} from './pages/login/login';
-import {SignupPage} from './pages/signup/signup';
 import {SharePage} from './pages/share/share';
 import {LocationPage} from './pages/location/location';
+import {AboutUsPage} from './pages/aboutUs/aboutUs';
+import {SettingsPage} from './pages/settings/settings';
+import {FeedbackPage} from './pages/feedback/feedback';
 import {Type} from 'angular2/core';
 
 
@@ -14,16 +16,22 @@ import {Type} from 'angular2/core';
 export class MyApp {
   rootPage: Type = TabsPage;
   menuLoginPage: LoginPage;
-  menuSignupPage: SignupPage;
   menuSharePage: SharePage;
+  menuAboutUsPage: AboutUsPage;
+  menuSettingsPage: SettingsPage;
+  menuFeedbackPage: FeedbackPage;
   locationService: LocationPage;
   constructor(public app: IonicApp, public menu: MenuController, platform: Platform) {
     platform.ready().then(() => {
       this.app = app;
       this.menu = menu;
       this.menuLoginPage = LoginPage;
-      this.menuSignupPage = SignupPage;
       this.menuSharePage = SharePage;
+      this.menuAboutUsPage = AboutUsPage;
+      this.menuSettingsPage = SettingsPage;
+      this.menuFeedbackPage = FeedbackPage;
+
+
     });
   }
   openPage(page) {

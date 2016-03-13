@@ -21,6 +21,10 @@
 .custom .item-complex .item-content, .dark .item-radio .item-content {
   background-color: transparent;
 }
+
+.custom .item:focus{
+    background:olive;
+}
  
 /*Just makes the type white*/
 .custom h2,
@@ -28,5 +32,4 @@
 .custom p,
 .custom a {
   color: white;  /*Text color for each item, overrides the color property above*/
-  text-align: center;
 }
