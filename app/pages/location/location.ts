@@ -39,7 +39,8 @@ export class LocationPage {
   }
   getPOI(currentLoc) {
     for(var i=0; i < this.offersList.length; i++) {
-      if( currentLoc.kilometersTo(this.offersList[i].get("point")) <= this.offersList[i].get("radius") + this.radius.user) {
+      if( currentLoc.kilometersTo(this.offersList[i].get("point"))
+                  <= this.offersList[i].get("radius") + this.radius.user) {
         this.pointOfInterest[this.offersList[i].id] = {
           'id': this.offersList[i].id,
           'title': this.offersList[i].get('title'),
@@ -52,8 +53,7 @@ export class LocationPage {
   }
   updateLocation() {
     Geolocation.watchPosition(this.option).subscribe((data) => {
-      console.log(data.coords.latitude);
-      console.log(data.coords.longitude);
+      var e = new Events();
       var currentLoc = new Parse.GeoPoint([data.coords.latitude, data.coords.longitude]);
       if (this.offerUpdateFlag) {
           this.offerUpdateFlag = !this.offerUpdateFlag;
@@ -62,19 +62,17 @@ export class LocationPage {
           query.withinKilometers("point", currentLoc, this.radius.globalR);
           query.limit(this.limitResults);
           query.find().then(function (result){
-              return result;
-          }).then(function(result) {
-              this.events.publish('offer:queried', "dfsdsf");
-        });
+            e.publish('offer:queried', result);
+          });
       }
-      this.getPOI(currentLoc);
+      e.subscribe('offer:queried', (result) => {
+        console.log(result);
+        this.offersList = result;
+        this.getPOI(currentLoc);
+      });
       if(currentLoc.kilometersTo(this.prevLoc) >= this.radius.globalR) {
         this.offerUpdateFlag = true;
       }
-      this.events.subscribe('offer:queried', (result) => {
-        console.log('Welcome', result);
-      });
-      console.log(this.offersList);
     })
   }
 }
