@@ -1,3 +1,7 @@
+<ion-toolbar></ion-toolbar>
+<ion-toolbar position="bottom">
+  <button dark clear full (click)="goBack()">Back</button>
+</ion-toolbar>
 <ion-content class="location">
   <ion-refresher (refresh)="doRefresh($event)">
     <ion-refresher-content
