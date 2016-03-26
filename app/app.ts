@@ -7,6 +7,7 @@ import {SettingsPage} from './pages/settings/settings';
 import {Type} from 'angular2/core';
 import {Offers} from './services/OffersService';
 import {OffersCategory} from './services/OffersCategories';
+import {StatusBar} from 'ionic-native';
 
 @App({
   templateUrl: 'build/app.html',
@@ -26,6 +27,7 @@ export class MyApp {
       this.menuLoginPage = LoginPage;
       this.menuAboutUsPage = AboutUsPage;
       this.menuSettingsPage = SettingsPage;
+      StatusBar.styleDefault();
     });
   }
   openPage(page) {

@@ -17,11 +17,11 @@
     <ion-item>
       <ion-icon name="wine" item-left large ></ion-icon>
       <h2>{{offer.radius}}</h2>
-      <p>{{offer.location}}</p>
+      <p>{{offer.point.latitude}}</p>
     </ion-item>
 
     <ion-item>
-      <a href="geo://0,0?q=dallas" data-rel="external">
+      <a href="geo:{{offer.point.latitude}},{{offer.point.longitude}}" data-rel="external">
         <button primary round block full>
           <ion-icon name="navigate"></ion-icon>
           Start

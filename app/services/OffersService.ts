@@ -24,10 +24,8 @@ export class Offers {
   option: any;
   Offer;
   events: Events;
-  private zone;
-  constructor(ngZone) { // Remove NgZone Here
+  constructor() {
     this.rxEmitter = this._emitter;
-    this.zone = ngZone;
     this.option = {
         enableHighAccuracy: true,
         timeout: 30000,
@@ -41,31 +39,26 @@ export class Offers {
     this.limitResults = 20;
     this.offersList = [];
     this.Offer = new Parse.Object.extend("Offer");
-    this.events = new Events();
     this.updateLocation();
   }
   getGeoPoint(location) {
     return new Parse.GeoPoint(location);
   }
   getPOI(currentLoc) {
-    this.zone.run(() => { // Not sure if I need this zone anymore [try removing it]
-      for(var i=0; i < this.offersList[0].length; i++) {
-        if( currentLoc.kilometersTo(this.offersList[0][i].get("point"))
-                    <= this.offersList[0][i].get("radius") + this.radius.user) {
-          this.pointOfInterest[this.offersList[0][i].id] = {
-            'id': this.offersList[0][i].id,
-            'title': this.offersList[0][i].get('title'),
-            'description' : this.offersList[0][i].get('description'),
-            'point' : this.offersList[0][i].get('point'),
-            'radius' : this.offersList[0][i].get('radius')
-          };
-        }
+    for(var i=0; i < this.offersList[0].length; i++) {
+      if( currentLoc.kilometersTo(this.offersList[0][i].get("point"))
+                  <= this.offersList[0][i].get("radius") + this.radius.user) {
+        this.pointOfInterest[this.offersList[0][i].id] = {
+          'id': this.offersList[0][i].id,
+          'title': this.offersList[0][i].get('title'),
+          'description' : this.offersList[0][i].get('description'),
+          'point' : this.offersList[0][i].get('point'),
+          'radius' : this.offersList[0][i].get('radius')
+        };
       }
-      var e = new Events(); // Clean
-      e.publish('user:created', currentLoc); // Clean
-      this.offers = Object.keys(this.pointOfInterest).map(key => this.pointOfInterest[key]);
-      this.rxEmitter.next(true);
-    });
+    }
+    this.offers = Object.keys(this.pointOfInterest).map(key => this.pointOfInterest[key]);
+    this.rxEmitter.next(true);
   }
   updateLocation() {
     Geolocation.watchPosition(this.option).subscribe((data) => {
