@@ -48,6 +48,7 @@ export class Offers {
     for(var i=0; i < this.offersList[0].length; i++) {
       if( currentLoc.kilometersTo(this.offersList[0][i].get("point"))
                   <= this.offersList[0][i].get("radius") + this.radius.user) {
+        this.offersList[0][i].increment("views");
         this.pointOfInterest[this.offersList[0][i].id] = {
           'id': this.offersList[0][i].id,
           'title': this.offersList[0][i].get('title'),
@@ -55,6 +56,7 @@ export class Offers {
           'point' : this.offersList[0][i].get('point'),
           'radius' : this.offersList[0][i].get('radius')
         };
+        this.offersList[0][i].save();
       }
     }
     this.offers = Object.keys(this.pointOfInterest).map(key => this.pointOfInterest[key]);

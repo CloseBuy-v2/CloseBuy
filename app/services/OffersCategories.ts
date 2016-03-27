@@ -27,6 +27,7 @@ export class OffersCategory {
     });
     e.subscribe('offerbycat:queried', (results) => {
       for (var i = 0; i < results[0].length; i++) {
+        results[0][i].increment("views");
         this.pointOfInterest[results[0][i].id] = {
           'id': results[0][i].id,
           'title': results[0][i].get('title'),
@@ -34,6 +35,7 @@ export class OffersCategory {
           'point' : results[0][i].get('point'),
           'radius' : results[0][i].get('radius')
         }
+        results[0][i].save();
       }
       console.log(this.pointOfInterest);
       this.offers = Object.keys(this.pointOfInterest).map(key => this.pointOfInterest[key]);
