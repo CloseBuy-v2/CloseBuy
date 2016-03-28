@@ -33,7 +33,8 @@ export class OffersCategory {
           'title': results[0][i].get('title'),
           'description' : results[0][i].get('description'),
           'point' : results[0][i].get('point'),
-          'radius' : results[0][i].get('radius')
+          'radius' : results[0][i].get('radius'),
+          'category' : results[0][i].get('category')
         }
         results[0][i].save();
       }

@@ -1,6 +1,10 @@
-<ion-toolbar></ion-toolbar>
+<ion-toolbar dark>
+  <ion-title>
+    {{selectedItem}}
+  </ion-title>
+</ion-toolbar>
 <ion-toolbar position="bottom">
-  <button dark clear full (click)="goBack()">Back</button>
+  <button dark clear full (click)="goBack()"><ion-icon ios="ios-arrow-dropleft-circle" md="md-arrow-dropleft-circle"></ion-icon>BACK</button>
 </ion-toolbar>
 <ion-content class="location">
   <ion-refresher (refresh)="doRefresh($event)">
@@ -10,27 +14,20 @@
       refreshingText="Getting..">
     </ion-refresher-content>
   </ion-refresher>
-
-  <ion-card *ngFor="#offer of offersArray" class="animated zoomIn">
-    <ion-item>
-      <ion-icon name="football" item-left large></ion-icon>
-      <h2>{{offer.title}}</h2>
-      <p>{{offer.description}}</p>
-    </ion-item>
-
-    <ion-item>
-      <ion-icon name="wine" item-left large ></ion-icon>
-      <h2>{{offer.radius}}</h2>
-      <p>{{offer.point}}</p>
-    </ion-item>
-
+  <ion-card *ngFor="#offer of offersArray" class="animated zoomIn item-text-wrap">
+      <ion-item>
+        <h1>{{offer.title}}</h1>
+      </ion-item>
+      <ion-card-content>
+      <ion-item text-wrap>{{offer.description}}</ion-item>
     <ion-item>
       <a href="geo:{{offer.point.latitude}},{{offer.point.longitude}}" data-rel="external">
-        <button primary round block full>
+        <button primary block>
           <ion-icon name="navigate"></ion-icon>
           Start
         </button>
       </a>
     </ion-item>
+    </ion-card-content>
   </ion-card>
 </ion-content>
