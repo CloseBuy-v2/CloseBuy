@@ -38,7 +38,6 @@ export class OffersCategory {
         }
         results[0][i].save();
       }
-      console.log(this.pointOfInterest);
       this.offers = Object.keys(this.pointOfInterest).map(key => this.pointOfInterest[key]);
       this.rxEmitter.next(true)
     });
